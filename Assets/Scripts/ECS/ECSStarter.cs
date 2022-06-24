@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using Leopotam.Ecs;
 using UnityEngine;
+using Voody.UniLeo;
+
 namespace TestEcsZenject
 {
-    public class ECSStarter : MonoBehaviour
+    public sealed class ECSStarter : MonoBehaviour
     {
         private EcsWorld world;
         private EcsSystems systems;
@@ -13,8 +13,32 @@ namespace TestEcsZenject
         {
             world = new EcsWorld();
             systems = new EcsSystems(world);
-            systems.Add(new InitSystem());
+
+            AddInjections();
+            AddOneFrames();
+            AddSystems();
+
+            systems.ConvertScene();
+            
             systems.Init();
+        }
+
+        private void AddInjections()
+        {
+
+        }
+
+        private void AddSystems()
+        {
+            systems.Add(new InitSystem());
+            systems.Add(new PlayerInputSystem());
+            systems.Add(new PlayerMovementSystem());
+            systems.Add(new EnemySpawnSystem());
+        }
+
+        private void AddOneFrames()
+        {
+
         }
 
         // Update is called once per frame
@@ -25,8 +49,14 @@ namespace TestEcsZenject
 
         private void OnDestroy()
         {
+            if (systems != null) 
+                return;
+            
             systems.Destroy();
+            systems = null;
+
             world.Destroy();
+            world = null;
         }
     }
 }

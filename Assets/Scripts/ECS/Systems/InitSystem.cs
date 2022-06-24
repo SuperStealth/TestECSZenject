@@ -4,14 +4,13 @@ using Leopotam.Ecs;
 using UnityEngine;
 namespace TestEcsZenject
 {
-    public class InitSystem : IEcsInitSystem
+    public sealed class InitSystem : IEcsInitSystem
     {
         private EcsWorld _world;
 
         public void Init()
         {
-            var player = _world.NewEntity();
-            ref var playerInput = ref player.Get<InputComponent>();
+
         }
     }
 }
