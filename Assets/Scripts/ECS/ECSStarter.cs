@@ -1,6 +1,7 @@
 using Leopotam.Ecs;
 using UnityEngine;
 using Voody.UniLeo;
+using Zenject;
 
 namespace TestEcsZenject
 {
@@ -8,9 +9,14 @@ namespace TestEcsZenject
     {
         private EcsWorld world;
         private EcsSystems systems;
+
+        [Inject] private GameBinds _gameBinds;
+
         // Start is called before the first frame update
         private void Start()
         {
+            ClearWorld();
+            
             world = new EcsWorld();
             systems = new EcsSystems(world);
 
@@ -34,6 +40,7 @@ namespace TestEcsZenject
             systems.Add(new PlayerInputSystem());
             systems.Add(new PlayerMovementSystem());
             systems.Add(new EnemySpawnSystem());
+            systems.Inject(_gameBinds);
         }
 
         private void AddOneFrames()
@@ -44,19 +51,24 @@ namespace TestEcsZenject
         // Update is called once per frame
         private void Update()
         {
-            systems.Run();
+            systems?.Run();
         }
 
-        private void OnDestroy()
+        private void ClearWorld()
         {
-            if (systems != null) 
+            if (systems == null)
                 return;
-            
+
             systems.Destroy();
             systems = null;
 
             world.Destroy();
             world = null;
+        }
+
+        private void OnDestroy()
+        {
+            ClearWorld();
         }
     }
 }
