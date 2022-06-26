@@ -17,11 +17,12 @@ MonoBehaviour:
   weaponDamage: 10
   weaponSpeed: 5
   laserDPS: 70
+  asteroidSpawnDelay: 1000
   asteroidMinHealth: 50
   asteroidMaxHealth: 200
   asteroidMinSize: 1
-  asteroidMaxSize: 4
+  asteroidMaxSize: 3
   asteroidMinSpeed: 1
-  asteroidMaxSpeed: 5
-  asteroidMinAngle: -30
-  asteroidMaxAngle: 30
+  asteroidMaxSpeed: 3
+  asteroidMinY: -4
+  asteroidMaxY: 4

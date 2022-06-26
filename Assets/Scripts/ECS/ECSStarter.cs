@@ -11,6 +11,7 @@ namespace TestEcsZenject
         private EcsSystems systems;
 
         [Inject] private GameBinds _gameBinds;
+        [Inject] private SpawnTransforms _spawnTransforms;
 
         // Start is called before the first frame update
         private void Start()
@@ -31,7 +32,8 @@ namespace TestEcsZenject
 
         private void AddInjections()
         {
-
+            systems.Inject(_gameBinds);
+            systems.Inject(_spawnTransforms);
         }
 
         private void AddSystems()
@@ -40,7 +42,8 @@ namespace TestEcsZenject
             systems.Add(new PlayerInputSystem());
             systems.Add(new PlayerMovementSystem());
             systems.Add(new EnemySpawnSystem());
-            systems.Inject(_gameBinds);
+            systems.Add(new EnemyMoveSystem());
+            systems.Add(new EnemyDestroySystem());
         }
 
         private void AddOneFrames()

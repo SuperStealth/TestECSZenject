@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,23 +12,36 @@ namespace TestEcsZenject
 
         private GameBinds _gameBinds;
 
-        private int _lastAsteroidSpawnTime;
+        private SpawnTransforms _spawnTransforms;
 
-        [System.Obsolete]
+        private int _lastAsteroidSpawnTime = 0;
+
         public void Run()
         {
+            if (_lastAsteroidSpawnTime + _gameBinds.GameSettings.AsteroidSpawnDelay < Environment.TickCount)
+            {
+                SpawnAsteroid();
+                _lastAsteroidSpawnTime = Environment.TickCount;
+            }
+        }
+
+        private void SpawnAsteroid()
+        {
             var enemyEntity = _world.NewEntity();
+            var enemyObject = GameObject.Instantiate(_gameBinds.Asteroid);
 
             ref var movable = ref enemyEntity.Get<MovableComponent>();
-            var randomSpeed = Random.Range(_gameBinds.GameSettings.AsteroidMinSpeed, _gameBinds.GameSettings.AsteroidMaxSpeed);           
+            var randomSpeed = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSpeed, _gameBinds.GameSettings.AsteroidMaxSpeed);
             movable.Speed = randomSpeed;
 
             ref var transform = ref enemyEntity.Get<TransformComponent>();
-            var enemyObject = Object.Instantiate(_gameBinds.Asteroid);
-            var randomSize = Random.Range(_gameBinds.GameSettings.AsteroidMinSize, _gameBinds.GameSettings.AsteroidMaxSize);
+            var randomSize = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSize, _gameBinds.GameSettings.AsteroidMaxSize);
             enemyObject.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
-            transform.CharacterTransform = enemyObject.transform;
 
+            var randomY = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinY, _gameBinds.GameSettings.AsteroidMaxY);
+            enemyObject.transform.position = _spawnTransforms.EnemySpawn.position + new Vector3(0f, randomY, 0f);
+
+            transform.CharacterTransform = enemyObject.transform;
             enemyEntity.Get<EnemyTagComponent>();
         }
     }
