@@ -17,7 +17,14 @@ namespace TestEcsZenject
                     ref var damageComponent = ref _filter.Get4(i);
 
                     var colliderEntity = collision.collider.GetComponent<EntityReference>().entity;
-                    colliderEntity.Get<HealthComponent>().Health -= damageComponent.Damage;
+
+                    ref var colliderHealthComponent = ref colliderEntity.Get<HealthComponent>();
+
+                    colliderHealthComponent.Health -= damageComponent.Damage;
+                    if (colliderHealthComponent.Health <= 0f)
+                    {
+                        colliderEntity.Get<DestroyTagComponent>();
+                    }
 
                     ref var transformComponent = ref _filter.Get2(i);
                     Object.Destroy(transformComponent.Transform.gameObject);

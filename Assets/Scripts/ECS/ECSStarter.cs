@@ -22,7 +22,6 @@ namespace TestEcsZenject
             systems = new EcsSystems(world);
 
             AddInjections();
-            AddOneFrames();
             AddSystems();
 
             systems.ConvertScene();
@@ -49,11 +48,7 @@ namespace TestEcsZenject
             systems.Add(new BulletDespawnSystem()); 
             systems.Add(new CollisionHandleSystem());
             systems.Add(new EntityDestroySystem());
-        }
-
-        private void AddOneFrames()
-        {
-
+            systems.Add(new GameOverSystem());
         }
 
         // Update is called once per frame

@@ -1,13 +1,12 @@
 using Leopotam.Ecs;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace TestEcsZenject
 {
-    public class EntityDestroySystem : IEcsRunSystem
+    public class GameOverSystem : IEcsRunSystem
     {
-        private EcsFilter<DestroyTagComponent, TransformComponent>.Exclude<PlayerTagComponent> _filter;
-
+        private EcsFilter<PlayerTagComponent, TransformComponent, DestroyTagComponent> _filter;
+        
         public void Run()
         {
             foreach (var i in _filter)
@@ -16,7 +15,7 @@ namespace TestEcsZenject
                 Object.Destroy(transformComponent.Transform.gameObject);
                 _filter.GetEntity(i).Destroy();
             }
-        }
+        }       
     }
 }
 
