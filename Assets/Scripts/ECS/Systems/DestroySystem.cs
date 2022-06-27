@@ -12,7 +12,10 @@ namespace TestEcsZenject
             foreach (var i in _filter)
             {
                 ref var transformComponent = ref _filter.Get1(i);
-                Object.Destroy(transformComponent.Transform.gameObject);
+                if (transformComponent.Transform != null)
+                {
+                    Object.Destroy(transformComponent.Transform.gameObject);
+                }               
                 _filter.GetEntity(i).Destroy();
             }
         }

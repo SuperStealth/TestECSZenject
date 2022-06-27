@@ -11,7 +11,7 @@ namespace TestEcsZenject
         {
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             var shooting = Input.GetButton("Fire");
-            var switchingWeapon = Input.GetButton("Switch");
+            var switchingWeapon = Input.GetButtonDown("Switch");
 
             foreach (var entity in _inputFilter)
             {

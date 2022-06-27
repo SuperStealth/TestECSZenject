@@ -19,7 +19,7 @@ namespace TestEcsZenject
             ref var health = ref playerEntity.Get<HealthComponent>();
             health.Health = _gameBinds.GameSettings.PlayerHealth;
 
-            ref var weapon = ref playerEntity.Get<WeaponComponent>();
+            ref var weapon = ref playerEntity.Get<ProjectileWeaponComponent>();
             weapon.RateOfFire = _gameBinds.GameSettings.WeaponSpeed;
             weapon.Damage = _gameBinds.GameSettings.WeaponDamage;
 

@@ -37,7 +37,8 @@ namespace TestEcsZenject
             _systems.Add(new EnemySpawnSystem());
             _systems.Add(new EnemyMoveSystem());
             _systems.Add(new EnemyDestroySystem());
-            _systems.Add(new WeaponSystem());
+            _systems.Add(new ProjectileWeaponSystem());
+            _systems.Add(new WeaponSwitchSystem());
             _systems.Add(new ProjectileMoveSystem());
             _systems.Add(new BulletDespawnSystem()); 
             _systems.Add(new CollisionHandleSystem());

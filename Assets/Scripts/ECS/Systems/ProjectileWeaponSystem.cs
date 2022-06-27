@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public sealed class WeaponSystem : IEcsRunSystem
+    public sealed class ProjectileWeaponSystem : IEcsRunSystem
     {
         private EcsWorld _world;
-        private EcsFilter<InputComponent, WeaponComponent, TransformComponent> _filter;
+        private EcsFilter<InputComponent, ProjectileWeaponComponent, TransformComponent> _filter;
 
         private GameBinds _gameBinds;
 

@@ -17,9 +17,9 @@ namespace TestEcsZenject
                 ref var transform = ref _filter.Get2(i);
                 ref var health = ref _filter.Get3(i);
                 if (transform.Transform.position.x < LeftBound || health.Health <= 0f)
-                {
-                    Object.Destroy(transform.Transform.gameObject);
-                    _filter.GetEntity(i).Destroy();
+                {                  
+                    _filter.GetEntity(i).Get<DestroyTagComponent>();
+
                     if (health.Health <= 0f)
                     {
                         _world.NewEntity().Get<IncreaseScoreEvent>();
