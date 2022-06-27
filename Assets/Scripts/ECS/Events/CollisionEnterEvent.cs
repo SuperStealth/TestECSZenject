@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public struct CollisionEnterEvent
+namespace TestEcsZenject
 {
-    public GameObject collider;
+    public struct CollisionEnterEvent
+    {
+        public GameObject collider;
+    }
 }

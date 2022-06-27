@@ -4,6 +4,8 @@ namespace TestEcsZenject
 {
     public class CollisionHandleSystem : IEcsRunSystem
     {
+        private GameUI gameUI;
+        
         private EcsFilter<CollisionEnterEvent, TransformComponent, HealthComponent, DamageComponent> _filter;
         
         public void Run()
@@ -21,6 +23,7 @@ namespace TestEcsZenject
                     ref var colliderHealthComponent = ref colliderEntity.Get<HealthComponent>();
 
                     colliderHealthComponent.Health -= damageComponent.Damage;
+                    gameUI.SetHealth(colliderHealthComponent.Health);
                     if (colliderHealthComponent.Health <= 0f)
                     {
                         colliderEntity.Get<DestroyTagComponent>();

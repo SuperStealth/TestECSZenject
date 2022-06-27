@@ -4,9 +4,12 @@ using UnityEngine;
 namespace TestEcsZenject
 {
     public class EnemyDestroySystem : IEcsRunSystem
-    {
+    {        
         private const float LeftBound = -12f;
         
+        private GameUI gameUI;
+        
+        private EcsWorld _world;
         private EcsFilter<EnemyTagComponent, TransformComponent, HealthComponent> _filter;
 
         public void Run()
@@ -19,7 +22,11 @@ namespace TestEcsZenject
                 {
                     Object.Destroy(transform.Transform.gameObject);
                     _filter.GetEntity(i).Destroy();
-                }
+                    if (health.Health <= 0f)
+                    {
+                        _world.NewEntity().Get<IncreaseScoreEvent>();
+                    }                  
+                }               
             }
         }
     }

@@ -20,8 +20,8 @@ MonoBehaviour:
   laserDPS: 70
   asteroidSpawnDelay: 3000
   asteroidDamage: 20
-  asteroidMinHealth: 50
-  asteroidMaxHealth: 200
+  asteroidMinHealth: 20
+  asteroidMaxHealth: 50
   asteroidMinSize: 1
   asteroidMaxSize: 3
   asteroidMinSpeed: 1

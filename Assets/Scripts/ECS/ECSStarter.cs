@@ -7,6 +7,8 @@ namespace TestEcsZenject
 {
     public sealed class ECSStarter : MonoBehaviour
     {
+        [SerializeField] private GameUI gameUI;
+        
         private EcsWorld world;
         private EcsSystems systems;
 
@@ -17,7 +19,7 @@ namespace TestEcsZenject
         private void Start()
         {
             ClearWorld();
-            
+            InitUI();
             world = new EcsWorld();
             systems = new EcsSystems(world);
 
@@ -33,6 +35,7 @@ namespace TestEcsZenject
         {
             systems.Inject(_gameBinds);
             systems.Inject(_spawnTransforms);
+            systems.Inject(gameUI);
         }
 
         private void AddSystems()
@@ -48,6 +51,7 @@ namespace TestEcsZenject
             systems.Add(new BulletDespawnSystem()); 
             systems.Add(new CollisionHandleSystem());
             systems.Add(new EntityDestroySystem());
+            systems.Add(new ScoreSystem());
             systems.Add(new GameOverSystem());
         }
 
@@ -55,6 +59,12 @@ namespace TestEcsZenject
         private void Update()
         {
             systems?.Run();
+        }
+
+        private void InitUI()
+        {
+            gameUI.SetHealth(_gameBinds.GameSettings.PlayerHealth);
+            gameUI.SetScore(0);
         }
 
         private void ClearWorld()
