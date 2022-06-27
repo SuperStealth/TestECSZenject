@@ -1,8 +1,9 @@
 using Leopotam.Ecs;
 using UnityEngine;
+
 namespace TestEcsZenject
 {
-    public class ProjectileMoveSystem : IEcsRunSystem
+    public sealed class ProjectileMoveSystem : IEcsRunSystem
     {
         private GameBinds _binds;
         

@@ -944,10 +944,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fac1a42f34e024d9ddf0bccf9b7b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 38513826}
-  healthText: {fileID: 2034170719}
-  gameEnd: {fileID: 1301217480}
-  restartButton: {fileID: 45466631}
+  _scoreText: {fileID: 38513826}
+  _healthText: {fileID: 2034170719}
+  _gameEnd: {fileID: 1301217480}
+  _restartButton: {fileID: 45466631}
 --- !u!1 &1301217480
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,18 +9,16 @@ namespace TestEcsZenject
         private const float maxX = 10f;
         private const float minY = -4f;
         private const float maxY = 4f;
-        
-        private readonly EcsWorld _world = null;
 
-        private readonly EcsFilter<MovableComponent, InputComponent, TransformComponent> movableFilter = null;
+        private readonly EcsFilter<MovableComponent, InputComponent, TransformComponent> _movableFilter = null;
 
         public void Run()
         {
-            foreach (var i in movableFilter)
+            foreach (var i in _movableFilter)
             {
-                ref var movableComponent = ref movableFilter.Get1(i);
-                ref var inputComponent = ref movableFilter.Get2(i);
-                ref var transformComponent = ref movableFilter.Get3(i);
+                ref var movableComponent = ref _movableFilter.Get1(i);
+                ref var inputComponent = ref _movableFilter.Get2(i);
+                ref var transformComponent = ref _movableFilter.Get3(i);
 
                 ref var direction = ref inputComponent.InputDirection;
                 var currentPosition = transformComponent.Transform.position;

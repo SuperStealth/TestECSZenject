@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class GameOverSystem : IEcsRunSystem
+    public sealed class GameOverSystem : IEcsRunSystem
     {
-        private GameUI gameUI;
+        private GameUI _gameUI;
         
         private EcsFilter<PlayerTagComponent, TransformComponent, DestroyTagComponent> _filter;
 
@@ -16,8 +16,8 @@ namespace TestEcsZenject
                 ref var transformComponent = ref _filter.Get2(i);
                 Object.Destroy(transformComponent.Transform.gameObject);
                 _filter.GetEntity(i).Destroy();
-                gameUI.ShowUI(false);
-                gameUI.ShowGameEnd(true);
+                _gameUI.ShowUI(false);
+                _gameUI.ShowGameEnd(true);
             }
         }       
     }

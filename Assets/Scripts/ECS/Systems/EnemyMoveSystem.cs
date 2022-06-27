@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace TestEcsZenject
 {
-    public class EnemyMoveSystem : IEcsRunSystem
+    public sealed class EnemyMoveSystem : IEcsRunSystem
     {
         private EcsFilter<EnemyTagComponent, TransformComponent, MovableComponent> _filter;
         

@@ -1,12 +1,12 @@
 using Leopotam.Ecs;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace TestEcsZenject
 {
-    public class DestroySystem : IEcsDestroySystem
+    public sealed class DestroySystem : IEcsDestroySystem
     {
         private EcsFilter<TransformComponent> _filter;
+
         public void Destroy()
         {
             foreach (var i in _filter)

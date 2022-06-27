@@ -9,8 +9,8 @@ namespace TestEcsZenject
     {
         [SerializeField] private GameUI gameUI;
         
-        private EcsWorld world;
-        private EcsSystems systems;
+        private EcsWorld _world;
+        private EcsSystems _systems;
 
         [Inject] private GameBinds _gameBinds;
         [Inject] private SpawnTransforms _spawnTransforms;
@@ -24,47 +24,47 @@ namespace TestEcsZenject
 
         private void AddInjections()
         {
-            systems.Inject(_gameBinds);
-            systems.Inject(_spawnTransforms);
-            systems.Inject(gameUI);
+            _systems.Inject(_gameBinds);
+            _systems.Inject(_spawnTransforms);
+            _systems.Inject(gameUI);
         }
 
         private void AddSystems()
         {
-            systems.Add(new InitSystem());
-            systems.Add(new PlayerInputSystem());
-            systems.Add(new PlayerMovementSystem());
-            systems.Add(new EnemySpawnSystem());
-            systems.Add(new EnemyMoveSystem());
-            systems.Add(new EnemyDestroySystem());
-            systems.Add(new WeaponSystem());
-            systems.Add(new ProjectileMoveSystem());
-            systems.Add(new BulletDespawnSystem()); 
-            systems.Add(new CollisionHandleSystem());
-            systems.Add(new EntityDestroySystem());
-            systems.Add(new ScoreSystem());
-            systems.Add(new GameOverSystem());
-            systems.Add(new DestroySystem());
+            _systems.Add(new PlayerInitSystem());
+            _systems.Add(new PlayerInputSystem());
+            _systems.Add(new PlayerMovementSystem());
+            _systems.Add(new EnemySpawnSystem());
+            _systems.Add(new EnemyMoveSystem());
+            _systems.Add(new EnemyDestroySystem());
+            _systems.Add(new WeaponSystem());
+            _systems.Add(new ProjectileMoveSystem());
+            _systems.Add(new BulletDespawnSystem()); 
+            _systems.Add(new CollisionHandleSystem());
+            _systems.Add(new EntityDestroySystem());
+            _systems.Add(new ScoreSystem());
+            _systems.Add(new GameOverSystem());
+            _systems.Add(new DestroySystem());
         }
 
         // Update is called once per frame
         private void Update()
         {
-            systems?.Run();
+            _systems?.Run();
         }
 
         private void StartWorld()
         {
             InitUI();
-            world = new EcsWorld();
-            systems = new EcsSystems(world);
+            _world = new EcsWorld();
+            _systems = new EcsSystems(_world);
 
             AddInjections();
             AddSystems();
 
-            systems.ConvertScene();
+            _systems.ConvertScene();
 
-            systems.Init();
+            _systems.Init();
         }
 
         private void RestartWorld()
@@ -75,14 +75,14 @@ namespace TestEcsZenject
 
         private void ClearWorld()
         {
-            if (systems == null)
+            if (_systems == null)
                 return;
 
-            systems.Destroy();
-            systems = null;
+            _systems.Destroy();
+            _systems = null;
 
-            world.Destroy();
-            world = null;
+            _world.Destroy();
+            _world = null;
         }
 
         private void InitUI()

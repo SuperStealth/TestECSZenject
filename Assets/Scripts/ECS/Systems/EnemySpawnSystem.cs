@@ -1,12 +1,10 @@
 using Leopotam.Ecs;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class EnemySpawnSystem : IEcsRunSystem
+    public sealed class EnemySpawnSystem : IEcsRunSystem
     {
         private EcsWorld _world;
 

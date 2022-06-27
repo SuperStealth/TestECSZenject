@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public struct AsteroidComponent
+namespace TestEcsZenject
 {
-    float health;
-    float size;
-    float speed;
-    Vector3 direction;
+    public struct AsteroidComponent
+    {
+        public float Health;
+        public float Size;
+        public float Speed;
+        public Vector3 Direction;
+    }
 }

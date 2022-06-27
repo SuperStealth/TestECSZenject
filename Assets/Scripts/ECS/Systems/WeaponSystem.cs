@@ -1,11 +1,10 @@
 using Leopotam.Ecs;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace TestEcsZenject
 {
-    public class WeaponSystem : IEcsRunSystem
+    public sealed class WeaponSystem : IEcsRunSystem
     {
         private EcsWorld _world;
         private EcsFilter<InputComponent, WeaponComponent, TransformComponent> _filter;
@@ -38,7 +37,6 @@ namespace TestEcsZenject
 
             ref var damageComponent = ref bulletEntity.Get<DamageComponent>();
             damageComponent.Damage = _gameBinds.GameSettings.WeaponDamage;
-
 
             ref var transform = ref bulletEntity.Get<TransformComponent>();
 

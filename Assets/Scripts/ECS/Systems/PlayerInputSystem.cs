@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using Leopotam.Ecs;
 using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class PlayerInputSystem : IEcsRunSystem
+    public sealed class PlayerInputSystem : IEcsRunSystem
     {
-        private EcsWorld _world;
-        private EcsFilter<PlayerTagComponent, InputComponent> inputFilter = null;
+        private EcsFilter<PlayerTagComponent, InputComponent> _inputFilter;
 
         public void Run()
         {
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             var shooting = Input.GetButton("Fire");
             var switchingWeapon = Input.GetButton("Switch");
-            foreach (var entity in inputFilter)
+
+            foreach (var entity in _inputFilter)
             {
-                ref var inputComponent = ref inputFilter.Get2(entity);
+                ref var inputComponent = ref _inputFilter.Get2(entity);
                 inputComponent.InputDirection = movement;
                 inputComponent.IsShooting = shooting;
                 inputComponent.ChangingWeapon = switchingWeapon;

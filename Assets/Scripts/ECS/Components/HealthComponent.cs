@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace TestEcsZenject
 {
     public struct HealthComponent
@@ -9,4 +5,3 @@ namespace TestEcsZenject
         public float Health;
     }
 }
-

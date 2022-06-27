@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zenject;
+
 namespace TestEcsZenject
 {
     public class GameSceneInstaller : MonoInstaller

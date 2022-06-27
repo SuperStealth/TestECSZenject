@@ -1,15 +1,14 @@
 using Leopotam.Ecs;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class BulletDespawnSystem : IEcsRunSystem
+    public sealed class BulletDespawnSystem : IEcsRunSystem
     {
         private const float RightDespawnBound = 12f;
         
         private EcsFilter<BulletTagComponent, TransformComponent> _filter;
+
         public void Run()
         {
             foreach (var i in _filter)

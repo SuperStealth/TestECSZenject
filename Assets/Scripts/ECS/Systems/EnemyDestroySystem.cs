@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class EnemyDestroySystem : IEcsRunSystem
+    public sealed class EnemyDestroySystem : IEcsRunSystem
     {        
         private const float LeftBound = -12f;
-        
-        private GameUI gameUI;
         
         private EcsWorld _world;
         private EcsFilter<EnemyTagComponent, TransformComponent, HealthComponent> _filter;

@@ -1,10 +1,9 @@
 using Leopotam.Ecs;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace TestEcsZenject
 {
-    public class EntityDestroySystem : IEcsRunSystem
+    public sealed class EntityDestroySystem : IEcsRunSystem
     {
         private EcsFilter<DestroyTagComponent, TransformComponent>.Exclude<PlayerTagComponent> _filter;
 

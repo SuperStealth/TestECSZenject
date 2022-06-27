@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Leopotam.Ecs;
 using UnityEngine;
-using Zenject;
 
 namespace TestEcsZenject
 {
-    public sealed class InitSystem : IEcsInitSystem
+    public sealed class PlayerInitSystem : IEcsInitSystem
     {
         private EcsWorld _world;
 
@@ -30,6 +27,7 @@ namespace TestEcsZenject
             var playerObject = Object.Instantiate(_gameBinds.Player);
             playerObject.GetComponent<EntityReference>().entity = playerEntity;
             transform.Transform = playerObject.transform;
+
             playerEntity.Get<PlayerTagComponent>();
             playerEntity.Get<InputComponent>();      
         }

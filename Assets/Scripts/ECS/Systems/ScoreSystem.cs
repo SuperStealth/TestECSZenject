@@ -1,12 +1,11 @@
 using Leopotam.Ecs;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace TestEcsZenject
 {  
-    public class ScoreSystem : IEcsInitSystem, IEcsRunSystem
+    public sealed class ScoreSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private GameUI gameUI;
+        private GameUI _gameUI;
         
         private EcsWorld _world;
         private EcsEntity _scoreEntity;
@@ -25,7 +24,7 @@ namespace TestEcsZenject
                 _filter.GetEntity(i).Del<IncreaseScoreEvent>();
                 ref var scoreComponent = ref _scoreEntity.Get<ScoreComponent>();
                 scoreComponent.Score++;
-                gameUI.SetScore(scoreComponent.Score);
+                _gameUI.SetScore(scoreComponent.Score);
                 if (scoreComponent.Score > PlayerPrefs.GetInt("highscore"))
                 {
                     PlayerPrefs.SetInt("highscore", scoreComponent.Score);
