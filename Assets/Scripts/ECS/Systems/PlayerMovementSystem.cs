@@ -5,6 +5,11 @@ namespace TestEcsZenject
 {
     public sealed class PlayerMovementSystem : IEcsRunSystem
     {
+        private const float minX = -10f;
+        private const float maxX = 10f;
+        private const float minY = -4f;
+        private const float maxY = 4f;
+        
         private readonly EcsWorld _world = null;
 
         private readonly EcsFilter<MovableComponent, InputComponent, TransformComponent> movableFilter = null;
@@ -22,7 +27,8 @@ namespace TestEcsZenject
                 var speed = movableComponent.Speed;
 
                 var positionDelta = new Vector3(direction.x * speed * Time.deltaTime, direction.y * speed * Time.deltaTime);
-                transformComponent.Transform.position = currentPosition + positionDelta;
+                var newPosition = currentPosition + positionDelta;
+                transformComponent.Transform.position = newPosition;
             }
         }
     }

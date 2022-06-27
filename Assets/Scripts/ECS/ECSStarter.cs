@@ -18,17 +18,8 @@ namespace TestEcsZenject
         // Start is called before the first frame update
         private void Start()
         {
-            ClearWorld();
-            InitUI();
-            world = new EcsWorld();
-            systems = new EcsSystems(world);
-
-            AddInjections();
-            AddSystems();
-
-            systems.ConvertScene();
-            
-            systems.Init();
+            gameUI.RestartGameAction += RestartWorld;
+            StartWorld();          
         }
 
         private void AddInjections()
@@ -53,6 +44,7 @@ namespace TestEcsZenject
             systems.Add(new EntityDestroySystem());
             systems.Add(new ScoreSystem());
             systems.Add(new GameOverSystem());
+            systems.Add(new DestroySystem());
         }
 
         // Update is called once per frame
@@ -61,10 +53,24 @@ namespace TestEcsZenject
             systems?.Run();
         }
 
-        private void InitUI()
+        private void StartWorld()
         {
-            gameUI.SetHealth(_gameBinds.GameSettings.PlayerHealth);
-            gameUI.SetScore(0);
+            InitUI();
+            world = new EcsWorld();
+            systems = new EcsSystems(world);
+
+            AddInjections();
+            AddSystems();
+
+            systems.ConvertScene();
+
+            systems.Init();
+        }
+
+        private void RestartWorld()
+        {
+            ClearWorld();
+            StartWorld();
         }
 
         private void ClearWorld()
@@ -79,9 +85,18 @@ namespace TestEcsZenject
             world = null;
         }
 
+        private void InitUI()
+        {
+            gameUI.SetHealth(_gameBinds.GameSettings.PlayerHealth);
+            gameUI.SetScore(0);
+            gameUI.ShowGameEnd(false);
+            gameUI.ShowUI(true);
+        }
+
         private void OnDestroy()
         {
             ClearWorld();
+            gameUI.RestartGameAction -= RestartWorld;
         }
     }
 }

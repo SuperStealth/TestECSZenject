@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Text healthText;
     [SerializeField] private GameObject gameEnd;
     [SerializeField] private Button restartButton;
+
+    public Action RestartGameAction;
 
     private void Awake()
     {
@@ -25,7 +28,7 @@ public class GameUI : MonoBehaviour
 
     public void ShowGameEnd(bool show)
     {
-        gameEnd.SetActive(show);
+        gameEnd.SetActive(show);    
     }
 
     public void ShowUI(bool show)
@@ -36,7 +39,7 @@ public class GameUI : MonoBehaviour
 
     private void RestartGame()
     {
-        ShowGameEnd(false);
+        RestartGameAction?.Invoke();
     }
 
     private void OnDestroy()
