@@ -28,6 +28,12 @@ namespace TestEcsZenject
 
                 var positionDelta = new Vector3(direction.x * speed * Time.deltaTime, direction.y * speed * Time.deltaTime);
                 var newPosition = currentPosition + positionDelta;
+
+                if (newPosition.x < minX) newPosition.x = minX;
+                if (newPosition.x > maxX) newPosition.x = maxX;
+                if (newPosition.y < minY) newPosition.y = minY;
+                if (newPosition.y > maxY) newPosition.y = maxY;
+
                 transformComponent.Transform.position = newPosition;
             }
         }
