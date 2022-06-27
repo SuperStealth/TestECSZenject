@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private Button startButton;
-    [SerializeField] private Text highScoreText;
+    [SerializeField] private Button _startButton;
+    [SerializeField] private Text _highScoreText;
 
     private void Awake()
     {
-        startButton.onClick.AddListener(StartGame);
+        _startButton.onClick.AddListener(StartGame);
         SetHighscoreText();
     }
 
     private void SetHighscoreText()
     {
-        highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("highscore", 0);
+        _highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("highscore", 0);
     }
 
     private void StartGame()
@@ -27,6 +25,6 @@ public class Menu : MonoBehaviour
 
     private void OnDestroy()
     {
-        startButton.onClick.RemoveListener(StartGame);
+        _startButton.onClick.RemoveListener(StartGame);
     }
 }

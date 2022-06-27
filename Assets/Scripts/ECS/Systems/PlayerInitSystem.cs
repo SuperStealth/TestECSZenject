@@ -25,7 +25,7 @@ namespace TestEcsZenject
 
             ref var transform = ref playerEntity.Get<TransformComponent>();
             var playerObject = Object.Instantiate(_gameBinds.Player);
-            playerObject.GetComponent<EntityReference>().entity = playerEntity;
+            playerObject.GetComponent<EntityReference>().Entity = playerEntity;
             transform.Transform = playerObject.transform;
 
             playerEntity.Get<PlayerTagComponent>();

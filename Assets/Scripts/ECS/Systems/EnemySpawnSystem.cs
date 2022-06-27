@@ -28,7 +28,7 @@ namespace TestEcsZenject
             var enemyEntity = _world.NewEntity();
             var enemyObject = UnityEngine.Object.Instantiate(_gameBinds.Asteroid);
 
-            enemyObject.GetComponent<AsteroidCollisionHandler>().entity = enemyEntity;
+            enemyObject.GetComponent<AsteroidCollisionHandler>().Entity = enemyEntity;
             ref var movable = ref enemyEntity.Get<MovableComponent>();
             var randomSpeed = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSpeed, _gameBinds.GameSettings.AsteroidMaxSpeed);
             movable.Speed = randomSpeed;

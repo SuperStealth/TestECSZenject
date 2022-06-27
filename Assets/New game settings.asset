@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca19d20f61c24764e8084c157c0c1942, type: 3}
   m_Name: New game settings
   m_EditorClassIdentifier: 
-  playerHealth: 100
-  playerSpeed: 3
-  weaponDamage: 10
-  weaponSpeed: 500
-  bulletSpeed: 5
-  laserDPS: 70
-  asteroidSpawnDelay: 1000
-  asteroidDamage: 20
-  asteroidMinHealth: 20
-  asteroidMaxHealth: 50
-  asteroidMinSize: 1
-  asteroidMaxSize: 3
-  asteroidMinSpeed: 1
-  asteroidMaxSpeed: 3
-  asteroidMinY: -4
-  asteroidMaxY: 4
+  _playerHealth: 100
+  _playerSpeed: 3
+  _weaponDamage: 10
+  _weaponSpeed: 700
+  _bulletSpeed: 10
+  _laserDPS: 100
+  _asteroidSpawnDelay: 1000
+  _asteroidDamage: 20
+  _asteroidMinHealth: 20
+  _asteroidMaxHealth: 60
+  _asteroidMinSize: 1
+  _asteroidMaxSize: 3
+  _asteroidMinSpeed: 1
+  _asteroidMaxSpeed: 4
+  _asteroidMinY: -4
+  _asteroidMaxY: 4

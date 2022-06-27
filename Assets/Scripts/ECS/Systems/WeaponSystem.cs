@@ -41,7 +41,7 @@ namespace TestEcsZenject
             ref var transform = ref bulletEntity.Get<TransformComponent>();
 
             var prefab = UnityEngine.Object.Instantiate(_gameBinds.Bullet);
-            prefab.GetComponent<EntityReference>().entity = bulletEntity;
+            prefab.GetComponent<EntityReference>().Entity = bulletEntity;
             transform.Transform = prefab.transform;
             transform.Transform.position = position;
         }

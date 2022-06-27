@@ -5,17 +5,16 @@ namespace TestEcsZenject
 {
     public class AsteroidCollisionHandler : MonoBehaviour
     {
-        public EcsEntity entity;
+        public EcsEntity Entity;
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             var other = collision.collider.gameObject;
             if (other.tag != "Enemy")
             {
-                ref var collisionEvent = ref entity.Get<CollisionEnterEvent>();
+                ref var collisionEvent = ref Entity.Get<CollisionEnterEvent>();
                 collisionEvent.collider = other;
             }             
         }
     }
 }
-
-

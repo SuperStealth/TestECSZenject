@@ -15,7 +15,7 @@ namespace TestEcsZenject
             {               
                 ref var collision = ref _filter.Get1(i);
 
-                var colliderEntity = collision.collider.GetComponent<EntityReference>().entity;
+                var colliderEntity = collision.collider.GetComponent<EntityReference>().Entity;
                 if (colliderEntity.Has<PlayerTagComponent>())
                 {
                     ref var damageComponent = ref _filter.Get4(i);
