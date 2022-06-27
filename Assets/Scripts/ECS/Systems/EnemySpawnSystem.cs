@@ -28,8 +28,9 @@ namespace TestEcsZenject
         private void SpawnAsteroid()
         {
             var enemyEntity = _world.NewEntity();
-            var enemyObject = GameObject.Instantiate(_gameBinds.Asteroid);
+            var enemyObject = UnityEngine.Object.Instantiate(_gameBinds.Asteroid);
 
+            enemyObject.GetComponent<AsteroidCollisionHandler>().entity = enemyEntity;
             ref var movable = ref enemyEntity.Get<MovableComponent>();
             var randomSpeed = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSpeed, _gameBinds.GameSettings.AsteroidMaxSpeed);
             movable.Speed = randomSpeed;
@@ -37,6 +38,9 @@ namespace TestEcsZenject
             ref var health = ref enemyEntity.Get<HealthComponent>();
             var randomHealth = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinHealth, _gameBinds.GameSettings.AsteroidMaxHealth);
             health.Health = randomHealth;
+
+            ref var damageComponent = ref enemyEntity.Get<DamageComponent>();
+            damageComponent.Damage = _gameBinds.GameSettings.AsteroidDamage;
 
             ref var transform = ref enemyEntity.Get<TransformComponent>();
             var randomSize = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSize, _gameBinds.GameSettings.AsteroidMaxSize);

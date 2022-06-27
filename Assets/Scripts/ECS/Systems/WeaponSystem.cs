@@ -36,10 +36,14 @@ namespace TestEcsZenject
             var bulletEntity = _world.NewEntity();
             bulletEntity.Get<BulletTagComponent>();
 
+            ref var damageComponent = ref bulletEntity.Get<DamageComponent>();
+            damageComponent.Damage = _gameBinds.GameSettings.WeaponDamage;
+
+
             ref var transform = ref bulletEntity.Get<TransformComponent>();
 
             var prefab = UnityEngine.Object.Instantiate(_gameBinds.Bullet);
-            prefab.GetComponent<BulletCollisionHandler>().entity = bulletEntity;
+            prefab.GetComponent<EntityReference>().entity = bulletEntity;
             transform.Transform = prefab.transform;
             transform.Transform.position = position;
         }

@@ -16,6 +16,7 @@ namespace TestEcsZenject
         [SerializeField] private float laserDPS;
 
         [SerializeField] private float asteroidSpawnDelay;
+        [SerializeField] private float asteroidDamage;
         [SerializeField] private float asteroidMinHealth;
         [SerializeField] private float asteroidMaxHealth;
         [SerializeField] private float asteroidMinSize;
@@ -42,5 +43,6 @@ namespace TestEcsZenject
         public float AsteroidMinY { get => asteroidMinY; }
         public float AsteroidMaxY { get => asteroidMaxY; }
         public float AsteroidSpawnDelay { get => asteroidSpawnDelay; }
+        public float AsteroidDamage { get => asteroidDamage; }
     }
 }

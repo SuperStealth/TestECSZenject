@@ -47,6 +47,8 @@ namespace TestEcsZenject
             systems.Add(new WeaponSystem());
             systems.Add(new ProjectileMoveSystem());
             systems.Add(new BulletDespawnSystem()); 
+            systems.Add(new CollisionHandleSystem());
+            systems.Add(new EntityDestroySystem());
         }
 
         private void AddOneFrames()
