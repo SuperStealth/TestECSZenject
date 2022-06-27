@@ -15,7 +15,16 @@ namespace TestEcsZenject
             {
                 ref var transformComponent = ref _filter.Get2(i);
                 Object.Destroy(transformComponent.Transform.gameObject);
-                _filter.GetEntity(i).Destroy();
+
+                var entity = _filter.GetEntity(i);
+                if (entity.Has<LaserWeaponComponent>())
+                {
+                    ref var laserComponent = ref entity.Get<LaserWeaponComponent>();
+                    Object.Destroy(laserComponent.LaserObject);
+                    laserComponent.LaserObject = null;
+                }
+
+                entity.Destroy();
                 _gameUI.ShowUI(false);
                 _gameUI.ShowGameEnd(true);
             }
