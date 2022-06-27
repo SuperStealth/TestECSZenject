@@ -7,11 +7,13 @@ namespace TestEcsZenject
     {
         public GameObject Player { get; }
         public GameObject Asteroid { get; }
+        public GameObject Bullet { get; }
         public GameSettings GameSettings { get; }
-        public GameBinds(GameObject player, GameObject asteroid, GameSettings settings)
+        public GameBinds(GameObject player, GameObject asteroid, GameObject bullet, GameSettings settings)
         {
             Player = player;
             Asteroid = asteroid;
+            Bullet = bullet;
             GameSettings = settings;
         }
     }

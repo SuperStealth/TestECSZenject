@@ -6,6 +6,7 @@ namespace TestEcsZenject
     {
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject enemy;
+        [SerializeField] private GameObject bullet;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private ECSStarter gameStarter;
         [SerializeField] private Transform playerSpawn;
@@ -13,7 +14,7 @@ namespace TestEcsZenject
 
         public override void InstallBindings()
         {           
-            Container.BindInstance(new GameBinds(player,enemy,gameSettings)).AsSingle();
+            Container.BindInstance(new GameBinds(player,enemy,bullet,gameSettings)).AsSingle();
             Container.BindInstance(new SpawnTransforms(playerSpawn, enemySpawn)).AsSingle();
         }
     }

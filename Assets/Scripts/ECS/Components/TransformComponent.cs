@@ -6,6 +6,6 @@ namespace TestEcsZenject
     [Serializable]
     public struct TransformComponent
     {
-        public Transform CharacterTransform;
+        public Transform Transform;
     }
 }

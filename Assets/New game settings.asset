@@ -15,7 +15,8 @@ MonoBehaviour:
   playerHealth: 100
   playerSpeed: 3
   weaponDamage: 10
-  weaponSpeed: 5
+  weaponSpeed: 500
+  bulletSpeed: 5
   laserDPS: 70
   asteroidSpawnDelay: 1000
   asteroidMinHealth: 50

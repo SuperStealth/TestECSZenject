@@ -11,6 +11,7 @@ namespace TestEcsZenject
 
         [SerializeField] private float weaponDamage;
         [SerializeField] private float weaponSpeed;
+        [SerializeField] private float bulletSpeed;
 
         [SerializeField] private float laserDPS;
 
@@ -26,9 +27,12 @@ namespace TestEcsZenject
 
         public float PlayerHealth { get => playerHealth; }
         public float PlayerSpeed { get => playerSpeed; }
+
         public float WeaponDamage { get => weaponDamage; }
         public float WeaponSpeed { get => weaponSpeed; }
+        public float BulletSpeed { get => bulletSpeed; }
         public float LaserDPS { get => laserDPS; }
+
         public float AsteroidMinHealth { get => asteroidMinHealth; }
         public float AsteroidMaxHealth { get => asteroidMaxHealth; }
         public float AsteroidMinSize { get => asteroidMinSize; }

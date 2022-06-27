@@ -34,6 +34,10 @@ namespace TestEcsZenject
             var randomSpeed = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSpeed, _gameBinds.GameSettings.AsteroidMaxSpeed);
             movable.Speed = randomSpeed;
 
+            ref var health = ref enemyEntity.Get<HealthComponent>();
+            var randomHealth = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinHealth, _gameBinds.GameSettings.AsteroidMaxHealth);
+            health.Health = randomHealth;
+
             ref var transform = ref enemyEntity.Get<TransformComponent>();
             var randomSize = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinSize, _gameBinds.GameSettings.AsteroidMaxSize);
             enemyObject.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
@@ -41,7 +45,7 @@ namespace TestEcsZenject
             var randomY = UnityEngine.Random.Range(_gameBinds.GameSettings.AsteroidMinY, _gameBinds.GameSettings.AsteroidMaxY);
             enemyObject.transform.position = _spawnTransforms.EnemySpawn.position + new Vector3(0f, randomY, 0f);
 
-            transform.CharacterTransform = enemyObject.transform;
+            transform.Transform = enemyObject.transform;
             enemyEntity.Get<EnemyTagComponent>();
         }
     }

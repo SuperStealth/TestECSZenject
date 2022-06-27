@@ -1,21 +1,21 @@
 using Leopotam.Ecs;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class EnemyDestroySystem : IEcsRunSystem
+    public class BulletDespawnSystem : IEcsRunSystem
     {
-        private const float LeftBound = -12f;
+        private const float RightDespawnBound = 12f;
         
-        private EcsFilter<EnemyTagComponent, TransformComponent, HealthComponent> _filter;
-
+        private EcsFilter<BulletTagComponent, TransformComponent> _filter;
         public void Run()
         {
             foreach (var i in _filter)
             {
                 ref var transform = ref _filter.Get2(i);
-                ref var health = ref _filter.Get3(i);
-                if (transform.Transform.position.x < LeftBound || health.Health <= 0f)
+                if (transform.Transform.position.x > RightDespawnBound)
                 {
                     Object.Destroy(transform.Transform.gameObject);
                     _filter.GetEntity(i).Destroy();

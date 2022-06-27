@@ -17,7 +17,7 @@ namespace TestEcsZenject
 
                 var speed = speedComponent.Speed;
                 Vector3 positionDelta = new Vector3(- speed * Time.deltaTime, 0f, 0f);
-                transformComponent.CharacterTransform.position += positionDelta;
+                transformComponent.Transform.position += positionDelta;
             }
         }
     }

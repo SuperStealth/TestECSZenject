@@ -18,11 +18,11 @@ namespace TestEcsZenject
                 ref var transformComponent = ref movableFilter.Get3(i);
 
                 ref var direction = ref inputComponent.InputDirection;
-                var currentPosition = transformComponent.CharacterTransform.position;
+                var currentPosition = transformComponent.Transform.position;
                 var speed = movableComponent.Speed;
 
                 var positionDelta = new Vector3(direction.x * speed * Time.deltaTime, direction.y * speed * Time.deltaTime);
-                transformComponent.CharacterTransform.position = currentPosition + positionDelta;
+                transformComponent.Transform.position = currentPosition + positionDelta;
             }
         }
     }
