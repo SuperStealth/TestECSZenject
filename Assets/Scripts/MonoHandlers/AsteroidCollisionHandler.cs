@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace TestEcsZenject
 {
-    public class AsteroidCollisionHandler : MonoBehaviour
+    public class AsteroidCollisionHandler : EntityReference
     {
-        public EcsEntity Entity;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
